@@ -1,220 +1,212 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free kick by ranvijay</title>
+    <title>Elite Football Insights | Premium Tips</title>
     <style>
-        /* Base Styles */
+        :root {
+            --primary-color: #00ff88; /* Neon Green */
+            --accent-color: #ffcc00;  /* Gold */
+            --bg-dark: #0a0a0a;
+            --glass: rgba(255, 255, 255, 0.1);
+        }
+
         body, html {
             margin: 0;
             padding: 0;
-            height: 100%;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #000;
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-dark);
             color: white;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
-        /* Background Image with Blur Effect */
-        .bg-container {
+        /* Video ya Image Background */
+        .hero-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), 
-                        url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1000') no-repeat center center;
+            background: linear-gradient(45deg, rgba(0,0,0,0.9), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1500'); 
             background-size: cover;
+            background-position: center;
             z-index: -1;
+            filter: brightness(0.6);
         }
 
-        /* Top Navigation Simulation */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            font-size: 14px;
-        }
-
-        /* Main Content Wrapper */
-        .container {
+        .wrapper {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
-            height: calc(100% - 150px);
-            padding: 0 30px;
+            align-items: center;
+        }
+
+        /* Glass Card */
+        .main-card {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 25px;
+            padding: 40px 25px;
             text-align: center;
-        }
-
-        .breadcrumb {
-            font-size: 18px;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-            opacity: 0.9;
-        }
-
-        .main-title {
-            font-size: 32px;
-            font-weight: bold;
-            margin: 0 0 40px 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        /* Updates Box */
-        .updates-box {
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
             width: 100%;
-            max-width: 350px;
+        }
+
+        .badge {
+            background: var(--accent-color);
+            color: black;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin: 10px 0;
+            line-height: 1.1;
+            background: linear-gradient(to right, #fff, var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .features {
             text-align: left;
-            margin-bottom: 30px;
+            margin: 30px 0;
         }
 
-        .updates-box h2 {
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
-
-        .update-item {
+        .feature-item {
             display: flex;
-            align-items: flex-start;
-            margin-bottom: 12px;
-            font-size: 15px;
-            line-height: 1.4;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 16px;
         }
 
-        .check-icon {
-            color: #4CAF50;
-            margin-right: 10px;
-            font-weight: bold;
-        }
-
-        /* Paid Promotion Label */
-        .promo-label {
-            font-size: 18px;
-            margin-bottom: 25px;
-        }
-
-        .promo-tag {
-            background-color: #0088cc;
-            padding: 2px 10px;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-
-        /* Telegram Button */
-        .join-btn {
-            background-color: #00c853;
-            color: white;
-            text-decoration: none;
-            width: 100%;
-            max-width: 320px;
-            padding: 15px;
-            border-radius: 10px;
+        .icon {
+            color: var(--primary-color);
+            margin-right: 15px;
             font-size: 20px;
-            font-weight: bold;
+        }
+
+        /* Animated Button */
+        .cta-button {
+            background: linear-gradient(90deg, #00c853, #00ff88);
+            color: black;
+            text-decoration: none;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            border: none;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        .join-btn:active {
-            transform: scale(0.98);
-        }
-
-        /* Timer Section */
-        .timer-text {
-            margin-top: 25px;
+            gap: 12px;
+            padding: 18px;
+            border-radius: 15px;
             font-size: 20px;
-            font-weight: 500;
+            font-weight: 800;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(0, 255, 136, 0.3);
+            border: none;
+            width: 100%;
+            cursor: pointer;
         }
 
-        #countdown {
-            color: #00ff00;
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 255, 136, 0.5);
+        }
+
+        /* Countdown */
+        .timer-container {
+            margin-top: 25px;
+            font-size: 14px;
+            color: #ddd;
+        }
+
+        #timer {
+            color: var(--accent-color);
             font-weight: bold;
+            font-size: 18px;
         }
 
-        /* Footer Disclaimer */
-        .disclaimer {
-            position: absolute;
-            bottom: 20px;
-            left: 0;
-            right: 0;
-            padding: 0 25px;
+        .footer-text {
             font-size: 10px;
-            color: #aaaaaa;
-            text-align: center;
-            line-height: 1.5;
+            margin-top: 30px;
+            opacity: 0.6;
+            line-height: 1.6;
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-container"></div>
+    <div class="hero-bg"></div>
 
-    <header>
-        <div style="font-size: 24px;">✕</div>
-        <div>insights</div>
-<div style="letter-spacing: 2px; font-weight: bold;">...</div>
-    </header>
+    <div class="wrapper">
+        <div class="main-card">
+ <div class="badge">Official Insights</div>
+            <h1>Elite Football { No.1 Hub }</h1>
+            <p style="color: #ccc; margin-bottom: 30px;">Daily Match Analysis & Winning Strategies</p>
 
-    <div class="container">
-        <div class="breadcrumb">insights</div>
-        <h1 class="main-title">FREE KICK BY RANVIJAY</h1>
-
-        <div class="updates-box">
-            <h2>Latest updates</h2>
-            <div class="update-item">
-                <span class="check-icon">✓</span>
-                <span>Research-led insights with transparent records</span>
+            <div class="features">
+                <div class="feature-item">
+                    <span class="icon">★</span>
+                    <span>95% Accuracy in Match Predictions</span>
+                </div>
+                <div class="feature-item">
+                    <span class="icon">★</span>
+                    <span>Real-time Injury & Squad Updates</span>
+                </div>
+                <div class="feature-item">
+                    <span class="icon">★</span>
+                    <span>Exclusive VIP Community Access</span>
+                </div>
             </div>
-            <div class="update-item">
-                <span class="check-icon">✓</span>
-                <span>Recent matches and learnings shagreen</span>
+
+            <a href="https://t.me/YourChannelLink" class="cta-button">
+                JOIN TELEGRAM FREE
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.93 1.23-5.46 3.62-.51.35-.98.52-1.4.51-.46-.01-1.35-.26-2.01-.48-.81-.27-1.45-.42-1.39-.89.03-.24.36-.49.99-.75 3.88-1.69 6.46-2.8 7.74-3.32 3.69-1.5 4.45-1.76 4.95-1.77.11 0 .36.03.52.16.13.11.17.26.19.37.02.08.02.23.01.32z"/></svg>
+            </a>
+
+            <div class="timer-container">
+                Joining link expires in: <span id="timer">30:00</span>
             </div>
+
+            <p class="footer-text">
+                Note: We are not a betting site. This page provides information and analysis for educational purposes only. Risk management is advised.
+            </p>
         </div>
-
-        <div class="promo-label">
-            Paid Promotion : <span class="promo-tag">@RANVIJAY2110</span>
-        </div>
-
-        <a href="https://t.me/MayaFootball9" class="join-btn">
-            JOIN NOW FOR FREE 
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.93 1.23-5.46 3.62-.51.35-.98.52-1.4.51-.46-.01-1.35-.26-2.01-.48-.81-.27-1.45-.42-1.39-.89.03-.24.36-.49.99-.75 3.88-1.69 6.46-2.8 7.74-3.32 3.69-1.5 4.45-1.76 4.95-1.77.11 0 .36.03.52.16.13.11.17.26.19.37.02.08.02.23.01.32z"/>
-            </svg>
-        </a>
-
-        <div class="timer-text">
-            FREE JOINING ENDS IN... <span id="countdown">30 seconds</span>
-        </div>
-    </div>
-
-    <div class="disclaimer">
-        Disclaimer: This channel shares cricket updates, analysis, and general information for fans. It does not provide or promote betting or gambling, and no outcomes are guaranteed. Joining or acting on information is at your own discretion—please verify independently and act.
     </div>
 
     <script>
-        // Logic for the countdown timer
-        let timeLeft = 5;
-        const timerElement = document.getElementById('countdown');
+        // Professional Countdown Timer (30 minutes)
+        let time = 30 * 60; 
+        const display = document.querySelector('#timer');
 
-        const timerInterval = setInterval(() => {
-            timeLeft--;
-            if (timeLeft >= 0) {
-                timerElement.innerText = timeLeft + " seconds";
-            } else {
-                clearInterval(timerInterval);
-                timerElement.innerText = "EXPIRED";
-                timerElement.style.color = "red";
-            }
-        }, 1000);
+        function startTimer() {
+            const countdown = setInterval(function () {
+                let minutes = parseInt(time / 60, 10);
+                let seconds = parseInt(time % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = minutes + ":" + seconds;
+
+                if (--time < 0) {
+                    clearInterval(countdown);
+                    display.textContent = "EXPIRED";
+                    document.querySelector('.cta-button').style.filter = "grayscale(1)";
+                }
+            }, 1000);
+        }
+        startTimer();
     </script>
-
 </body>
-</html>
+</html>           
