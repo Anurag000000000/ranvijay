@@ -3,210 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite Football Insights | Premium Tips</title>
+    <title>Premium Football Landing Page</title>
     <style>
         :root {
-            --primary-color: #00ff88; /* Neon Green */
-            --accent-color: #ffcc00;  /* Gold */
-            --bg-dark: #0a0a0a;
-            --glass: rgba(255, 255, 255, 0.1);
+            --neon-green: #00ff88;
+            --dark-bg: #0f0f0f;
         }
 
         body, html {
             margin: 0;
             padding: 0;
-            font-family: 'Poppins', sans-serif;
-            background: var(--bg-dark);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--dark-bg);
             color: white;
-            overflow-x: hidden;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
         }
 
-        /* Video ya Image Background */
-        .hero-bg {
+        /* Background image with overlay */
+        .background {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, rgba(0,0,0,0.9), rgba(0,0,0,0.4)), 
-                        url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1500'); 
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), 
+                        url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1000');
             background-size: cover;
             background-position: center;
             z-index: -1;
-            filter: brightness(0.6);
         }
 
-        .wrapper {
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 20px;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Glass Card */
-        .main-card {
-            background: var(--glass);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 25px;
-            padding: 40px 25px;
+        .card {
+            width: 90%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
             text-align: center;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            width: 100%;
-        }
-
-        .badge {
-            background: var(--accent-color);
-            color: black;
-            padding: 5px 15px;
-            border-radius: 50px;
-            font-size: 12px;
-            font-weight: 900;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            display: inline-block;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
         }
 
         h1 {
-            font-size: 36px;
-            margin: 10px 0;
-            line-height: 1.1;
-            background: linear-gradient(to right, #fff, var(--primary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .subtitle {
+            color: var(--neon-green);
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
         }
 
         .features {
             text-align: left;
-            margin: 30px 0;
+            margin-bottom: 30px;
+            font-size: 15px;
         }
 
         .feature-item {
+            margin: 10px 0;
             display: flex;
             align-items: center;
-            margin-bottom: 15px;
-            font-size: 16px;
         }
 
-        .icon {
-            color: var(--primary-color);
-            margin-right: 15px;
-            font-size: 20px;
+        .tick {
+            color: var(--neon-green);
+            margin-right: 10px;
+            font-weight: bold;
         }
 
-        /* Animated Button */
-        .cta-button {
-            background: linear-gradient(90deg, #00c853, #00ff88);
+        .btn {
+            background: var(--neon-green);
             color: black;
             text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 18px;
-            border-radius: 15px;
-            font-size: 20px;
+            padding: 15px;
+            border-radius: 12px;
             font-weight: 800;
-            transition: 0.3s;
-            box-shadow: 0 10px 20px rgba(0, 255, 136, 0.3);
-            border: none;
-            width: 100%;
-            cursor: pointer;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(0, 255, 136, 0.5);
-        }
-
-        /* Countdown */
-        .timer-container {
-            margin-top: 25px;
-            font-size: 14px;
-            color: #ddd;
-        }
-
-        #timer {
-            color: var(--accent-color);
-            font-weight: bold;
             font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
         }
 
-        .footer-text {
+        .btn:hover {
+            transform: scale(1.02);
+        }
+
+        .timer-box {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #ccc;
+        }
+
+        #seconds {
+            color: var(--neon-green);
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .disclaimer {
             font-size: 10px;
-            margin-top: 30px;
-            opacity: 0.6;
-            line-height: 1.6;
+            margin-top: 25px;
+            color: #888;
+            line-height: 1.4;
         }
     </style>
 </head>
 <body>
 
-    <div class="hero-bg"></div>
+    <div class="background"></div>
 
-    <div class="wrapper">
-        <div class="main-card">
- <div class="badge">Official Insights</div>
-            <h1>Elite Football { No.1 Hub }</h1>
-            <p style="color: #ccc; margin-bottom: 30px;">Daily Match Analysis & Winning Strategies</p>
+    <div class="card">
+        <div class="subtitle">Best Football Insights</div>
+        <h1>Elite Football Hub</h1>
+        <div class="features">
+            <div class="feature-item"><span class="tick">✔</span> Research-based Analysis</div>
+            <div class="feature-item"><span class="tick">✔</span> 90% Success Track Record</div>
+            <div class="feature-item"><span class="tick">✔</span> Free Daily Updates</div>
+        </div>
 
-            <div class="features">
-                <div class="feature-item">
-                    <span class="icon">★</span>
-                    <span>95% Accuracy in Match Predictions</span>
-                </div>
-                <div class="feature-item">
-                    <span class="icon">★</span>
-                    <span>Real-time Injury & Squad Updates</span>
-                </div>
-                <div class="feature-item">
-                    <span class="icon">★</span>
-                    <span>Exclusive VIP Community Access</span>
-                </div>
-            </div>
+        <a href="#" class="btn">
+            JOIN TELEGRAM NOW
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.
+05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.
+  93 1.23-5.46 3.62-.51.35-.98.52-1.4.51-.46-.01-1.35-.26-2.01-.48-.81-.27-1.45-.42-1.39-.89.03-.24.36-.49.99-.75 3.88-1.69 6.46-2.8 7.74-3.32 3.69-1.5 4.45-1.76 4.95-1.77.11 0 .36.03.52.16.13.11.17.26.19.37.02.08.02.23.01.32z"/></svg>
+        </a>
 
-            <a href="https://t.me/YourChannelLink" class="cta-button">
-                JOIN TELEGRAM FREE
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.93 1.23-5.46 3.62-.51.35-.98.52-1.4.51-.46-.01-1.35-.26-2.01-.48-.81-.27-1.45-.42-1.39-.89.03-.24.36-.49.99-.75 3.88-1.69 6.46-2.8 7.74-3.32 3.69-1.5 4.45-1.76 4.95-1.77.11 0 .36.03.52.16.13.11.17.26.19.37.02.08.02.23.01.32z"/></svg>
-            </a>
+        <div class="timer-box">
+            Offers ends in: <span id="seconds">30</span> seconds
+        </div>
 
-            <div class="timer-container">
-                Joining link expires in: <span id="timer">30:00</span>
-            </div>
-
-            <p class="footer-text">
-                Note: We are not a betting site. This page provides information and analysis for educational purposes only. Risk management is advised.
-            </p>
+        <div class="disclaimer">
+            *Information shared is for educational purposes only. We do not promote illegal activities.
         </div>
     </div>
 
     <script>
-        // Professional Countdown Timer (30 minutes)
-        let time = 30 * 60; 
-        const display = document.querySelector('#timer');
+        let timeLeft = 30; // 30 seconds timer
+        const timerSpan = document.getElementById('seconds');
+        const btn = document.querySelector('.btn');
 
-        function startTimer() {
-            const countdown = setInterval(function () {
-                let minutes = parseInt(time / 60, 10);
-                let seconds = parseInt(time % 60, 10);
+        const countdown = setInterval(() => {
+            timeLeft--;
+            timerSpan.textContent = timeLeft < 10 ? "0" + timeLeft : timeLeft;
 
-                minutes = minutes < 10 ? "0" + minutes : minutes;
-                seconds = seconds < 10 ? "0" + seconds : seconds;
-
-                display.textContent = minutes + ":" + seconds;
-
-                if (--time < 0) {
-                    clearInterval(countdown);
-                    display.textContent = "EXPIRED";
-                    document.querySelector('.cta-button').style.filter = "grayscale(1)";
-                }
-            }, 1000);
-        }
-        startTimer();
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                timerSpan.textContent = "00";
+                // Timer khatam hone par button ko disable ya style change kar sakte hain
+                btn.style.background = "#555";
+                btn.textContent = "LINK EXPIRED";
+                btn.style.pointerEvents = "none";
+            }
+        }, 1000);
     </script>
 </body>
-</html>           
+</html>                                                                              
